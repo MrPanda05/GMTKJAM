@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b52rvlvpejk1o"]
+
+[ext_resource type="Script" path="res://Interactables/InteractableTest.cs" id="1_it6ji"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy5su"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1lnd"]
+albedo_color = Color(0.0156863, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xqeg"]
+
+[node name="InteractableTest" type="StaticBody3D"]
+collision_layer = 14
+collision_mask = 5
+script = ExtResource("1_it6ji")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cy5su")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_m1lnd")
+mesh = SubResource("BoxMesh_7xqeg")

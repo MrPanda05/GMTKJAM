@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnv6a07on47ka"]
+
+[ext_resource type="PackedScene" uid="uid://cygryb3hbc3vh" path="res://Models/Sofa.fbx" id="1_6cs0j"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gbk88"]
+points = PackedVector3Array(-0.02729, -0.01, -0.01, -0.02729, -0.01, 0.0116877, -0.02729, 0.01, -0.01, 0.01, -0.01, -0.01, -0.0271258, -0.01, 0.0123118, -0.02729, 0.01, 0.0116877, 0.01, 0.01, -0.01, 0.01, -0.01, 0.0116877, -0.0266695, -0.01, 0.0127676, -0.0271258, 0.01, 0.0123118, 0.01, 0.01, 0.0116877, 0.00983209, -0.01, 0.0123118, -0.0260453, -0.01, 0.0129359, -0.0266695, 0.01, 0.0127676, 0.00983209, 0.01, 0.0123118, 0.00937582, -0.01, 0.0127676, -0.0260453, 0.01, 0.0129359, 0.00875164, -0.01, 0.0129359, 0.00937582, 0.01, 0.0127676, 0.00875164, 0.01, 0.0129359)
+
+[node name="Sofa" instance=ExtResource("1_6cs0j")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sofa" index="3"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sofa/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_gbk88")

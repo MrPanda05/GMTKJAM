@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3lkh5uqwrqag"]
+
+[ext_resource type="PackedScene" uid="uid://71pvn7f0b6wr" path="res://Models/DoorBase.tscn" id="1_go8wy"]
+
+[node name="DoorAxis" type="Node3D"]
+transform = Transform3D(0.938655, 0, 0, 0, 0.865341, 0, 0, 0, 0.938655, 23.6706, 1.85861, -2.37386)
+
+[node name="door" parent="." instance=ExtResource("1_go8wy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02233)

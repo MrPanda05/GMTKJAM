@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://st2ovqanydxl"
+path="res://.godot/imported/testmap.map-61a7af0f19160f44a5f4de412dbe7728.tres"
+
+[deps]
+
+source_file="res://Levels/testmap.map"
+dest_files=["res://.godot/imported/testmap.map-61a7af0f19160f44a5f4de412dbe7728.tres"]
+
+[params]
+

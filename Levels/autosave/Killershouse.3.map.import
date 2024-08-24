@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://ch3u8ylw6ldxk"
+path="res://.godot/imported/Killershouse.3.map-fb7c824fcd0a2ac26cf2b96e4bcdcfd7.tres"
+
+[deps]
+
+source_file="res://Levels/autosave/Killershouse.3.map"
+dest_files=["res://.godot/imported/Killershouse.3.map-fb7c824fcd0a2ac26cf2b96e4bcdcfd7.tres"]
+
+[params]
+
