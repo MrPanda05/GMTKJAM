@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cko4161ir4cdo"]
+
+[ext_resource type="PackedScene" uid="uid://c6ratcjngcbec" path="res://Models/table1.fbx" id="1_813kv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3n0qr"]
+points = PackedVector3Array(0.01, 0.01, 0.01, 0.01, 0.01, -0.01, -0.01, 0.01, 0.01, 0.01, -0.01, 0.01, 0.01, -0.01, -0.01, -0.01, 0.01, -0.01, -0.01, -0.01, 0.01, -0.01, -0.01, -0.01)
+
+[node name="table1" instance=ExtResource("1_813kv")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Head" index="4"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_3n0qr")

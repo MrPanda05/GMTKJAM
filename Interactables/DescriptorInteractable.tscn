@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2meo306067i5"]
+
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="1_3i3jj"]
+[ext_resource type="Script" path="res://Interactables/DescriptorInteractable.cs" id="1_u0870"]
+
+[node name="DescriptorInteractable" type="Node3D"]
+script = ExtResource("1_u0870")
+
+[node name="InteractableArea" parent="." instance=ExtResource("1_3i3jj")]

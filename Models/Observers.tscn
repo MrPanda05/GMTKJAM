@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://covt27jqyd5es"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4by2"]
+albedo_color = Color(0.0994691, 0.0994691, 0.0994691, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_580p1"]
+material = SubResource("StandardMaterial3D_v4by2")
+
+[node name="Observers" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_580p1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.288361, 0.18901, -0.411063)
+light_energy = 2.455
+omni_range = 0.225488
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907287, 0.18901, -0.598486)
+light_energy = 2.455
+omni_range = 0.225488

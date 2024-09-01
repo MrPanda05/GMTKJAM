@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt6r38qv2ey30"]
+
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="1_lx4x3"]
+[ext_resource type="Script" path="res://Interactables/InteractableTrigger.cs" id="1_os16q"]
+
+[node name="InteractableTrigger" type="Node3D"]
+script = ExtResource("1_os16q")
+
+[node name="InteractableArea" parent="." instance=ExtResource("1_lx4x3")]
+collision_layer = 0
+collision_mask = 1
+unique = true
+
+[connection signal="body_entered" from="InteractableArea" to="." method="OnInteractableAreaBodyEntered"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://biip81dw1yxg2"]
+
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="1_fra6p"]
+[ext_resource type="Script" path="res://Interactables/JumpscareTrigger.cs" id="1_gtsjt"]
+
+[node name="JumpscareTrigger" type="Node3D"]
+script = ExtResource("1_gtsjt")
+
+[node name="InteractableArea" parent="." instance=ExtResource("1_fra6p")]

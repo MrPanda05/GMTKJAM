@@ -1,46 +1,33 @@
-using Commons.Singletons;
 using Godot;
 using System;
-
+using Commons.Singletons;
 
 namespace Interactables
 {
-	public partial class KeyInteractable : StaticBody3D, IInteractable
+	public partial class KeyInteractable : Node3D
 	{
-        public bool unique { get ; set ; }
-        public Action MyInteraction { get; set; }
-        [Export] public string TextOnInteract { get; set; }
-
-
-        private Key myKey;
-
-        // Called when the node enters the scene tree for the first time.
+        private InteractableArea area;
+        [Export] public int myKeyId { get; private set; } = -1;
         public override void _Ready()
-		{
-            myKey = GetParent().GetParent() as Key;
-            MyInteraction += OnInteract;
-
+        {
+            area = GetNode<InteractableArea>("InteractableArea");
+            area.OnInteract += OnGetKey;
+        }
+        public void OnGetKey()
+        {
+            PlayerInvetorySingletoon.Instance.AddKey(myKeyId);
+            GD.Print($"Got key of ID: {myKeyId}");
+            DialogueManager.Instance.ShowPlayerText(area.TextOnInteract);
+            area.PlaySoundPool3D();
+            area.DisableSelf();
+            Visible = false;
+            //QueueFree();
         }
 
-		// Called every frame. 'delta' is the elapsed time since the previous frame.
-		public override void _Process(double delta)
-		{
-		}
-
-        public void OnInteract()
+        public override void _ExitTree()
         {
-            PlayerInvetorySingletoon.Instance.AddKey(myKey.GetMyId());
-            GD.Print($"Got key of ID: {myKey.GetMyId()}");
-            OnInteractionFinish();
-            DialogueManager.Instance.ShowPlayerText(TextOnInteract);
-            myKey.QueueFree();
-
-        }
-
-        public void OnInteractionFinish()
-        {
-            MyInteraction -= OnInteract;
-
+            area.OnInteract -= OnGetKey;
         }
     }
+
 }

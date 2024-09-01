@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b21idmnl6jvtc"]
+
+[ext_resource type="PackedScene" uid="uid://bdpvihbq5vv2t" path="res://Models/stove.fbx" id="1_nx3jx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dt4b1"]
+size = Vector3(3.43152, 3.86996, 3.9606)
+
+[node name="stove" instance=ExtResource("1_nx3jx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0114136, 0.00502014, -0.00831604)
+shape = SubResource("BoxShape3D_dt4b1")

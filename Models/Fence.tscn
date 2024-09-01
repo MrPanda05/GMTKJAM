@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://tsjtm7jjpa05"]
+
+[ext_resource type="PackedScene" uid="uid://cyg70sdilgebp" path="res://Models/fence.fbx" id="1_r050f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5nlbk"]
+size = Vector3(0.450806, 2.16296, 2.18494)
+
+[node name="fence" instance=ExtResource("1_r050f")]
+transform = Transform3D(1, 0, 0, 0, 4.19212, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
+transform = Transform3D(0.050912, 0, 0, 0, -6.06918e-09, -0.050912, 0, 0.00814873, -9.71404e-10, 0, 0, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00323486, -0.127502, -0.0681763)
+shape = SubResource("BoxShape3D_5nlbk")

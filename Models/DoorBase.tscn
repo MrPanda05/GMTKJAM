@@ -5,10 +5,10 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x4f0q"]
 points = PackedVector3Array(0.01, 0.01, 0.01, 0.01, 0.01, -0.01, -0.01, 0.01, 0.01, 0.01, -0.01, 0.01, 0.01, -0.01, -0.01, -0.01, 0.01, -0.01, -0.01, -0.01, 0.01, -0.01, -0.01, -0.01)
 
-[node name="doorBaseaxis" instance=ExtResource("1_sjh8p")]
+[node name="DoorBase" instance=ExtResource("1_sjh8p")]
 
 [node name="Door" parent="." index="0"]
-transform = Transform3D(16.3238, 0, 0, 0, -1.24467e-05, 180.307, 0, -104.41, -2.14943e-05, 0, 0, -1.1)
+transform = Transform3D(16.3238, 0, 0, 0, -4.56392e-06, 180.307, 0, -104.41, -7.88147e-06, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door" index="3"]
 collision_layer = 4

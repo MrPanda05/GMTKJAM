@@ -1,9 +1,96 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3lkh5uqwrqag"]
+[gd_scene load_steps=11 format=3 uid="uid://ijemha2tcjwm"]
 
-[ext_resource type="PackedScene" uid="uid://71pvn7f0b6wr" path="res://Models/DoorBase.tscn" id="1_go8wy"]
+[ext_resource type="Script" path="res://Interactables/DoorInteractable.cs" id="1_3s3n0"]
+[ext_resource type="PackedScene" uid="uid://71pvn7f0b6wr" path="res://Models/DoorBase.tscn" id="1_reqmh"]
+[ext_resource type="PackedScene" uid="uid://t1vbq5qrl6ck" path="res://Commons/Components/SoundPool3d.tscn" id="2_kbals"]
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="2_pu76x"]
+[ext_resource type="AudioStream" uid="uid://bnjghude02w0s" path="res://Sounds/maincut.mp3" id="3_odmul"]
 
-[node name="DoorAxis" type="Node3D"]
-transform = Transform3D(0.938655, 0, 0, 0, 0.865341, 0, 0, 0, 0.938655, 23.6706, 1.85861, -2.37386)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgg1p"]
+size = Vector3(0.335083, 3.58743, 2.08615)
 
-[node name="door" parent="." instance=ExtResource("1_go8wy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02233)
+[sub_resource type="Animation" id="Animation_4wljr"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mdl7u"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_np2t4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whxr3"]
+_data = {
+"Close": SubResource("Animation_4wljr"),
+"Open": SubResource("Animation_mdl7u"),
+"RESET": SubResource("Animation_np2t4")
+}
+
+[node name="DoorwithAxis" type="Node3D"]
+script = ExtResource("1_3s3n0")
+
+[node name="Hinge" type="Node3D" parent="."]
+
+[node name="SoundPool3D" parent="Hinge" instance=ExtResource("2_kbals")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02645)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Hinge/SoundPool3D"]
+stream = ExtResource("3_odmul")
+max_distance = 6.0
+max_polyphony = 2
+
+[node name="InteractableArea" parent="Hinge" node_paths=PackedStringArray("SoundPool3D") instance=ExtResource("2_pu76x")]
+SoundPool3D = NodePath("../SoundPool3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hinge/InteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0140991, -0.0182648, -1.04558)
+shape = SubResource("BoxShape3D_xgg1p")
+
+[node name="DoorBase" parent="Hinge" instance=ExtResource("1_reqmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.04292)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_whxr3")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

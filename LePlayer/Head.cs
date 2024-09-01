@@ -28,7 +28,7 @@ namespace LePlayer
 
                 if (Input.IsActionJustPressed("Interact"))
 				{
-					pingas.MyInteraction?.Invoke();
+					pingas.OnInteract?.Invoke();
 				}
 			}
 			else

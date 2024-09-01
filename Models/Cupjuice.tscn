@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://saajacf7twgg"]
+
+[ext_resource type="PackedScene" uid="uid://c25lr8mhc178w" path="res://Models/cupjuice.fbx" id="1_1qrt2"]
+
+[node name="cupjuice" instance=ExtResource("1_1qrt2")]

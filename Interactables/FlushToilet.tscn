@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://jrph26fix0f2"]
+
+[ext_resource type="Script" path="res://Interactables/FlushToilet.cs" id="1_u2pw7"]
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="2_wfwgn"]
+
+[node name="FlushToilet" type="Node3D"]
+script = ExtResource("1_u2pw7")
+
+[node name="InteractableArea" parent="." instance=ExtResource("2_wfwgn")]

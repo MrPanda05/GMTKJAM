@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b32pdjbgq5gp2"]
+
+[ext_resource type="PackedScene" uid="uid://duaekvn3tdekj" path="res://Models/tv.fbx" id="1_mi13d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k2axx"]
+size = Vector3(0.761139, 0.789307, 1.30136)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_byxkm"]
+size = Vector3(0.929023, 1, 1.35113)
+
+[node name="tv" instance=ExtResource("1_mi13d")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0559235, 0.258179, 0.0919342)
+shape = SubResource("BoxShape3D_k2axx")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0622748, 0.248041, 0.106728)
+occluder = SubResource("BoxOccluder3D_byxkm")

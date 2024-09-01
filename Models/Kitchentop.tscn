@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ujtuq0bdh6a"]
+
+[ext_resource type="PackedScene" uid="uid://brnnajl2gnrno" path="res://Models/kitchentop.fbx" id="1_tvd86"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhkxj"]
+size = Vector3(2.13397, 3.33502, 13.0807)
+
+[node name="kitchentop" instance=ExtResource("1_tvd86")]
+
+[node name="Faucet" parent="Kitchen top" index="0"]
+transform = Transform3D(-0.951108, -0.00133618, 0.00156062, 0.00560073, -0.126711, 0.276675, -0.0010221, 0.549043, 0.0638564, -0.000126625, 0.00192235, 0.00886758)
+
+[node name="Cold" parent="Kitchen top" index="2"]
+transform = Transform3D(-0.0585921, 0.946186, -5.99564e-09, -1.58194e-08, 3.34866e-08, 0.159687, 0.608501, 0.0911075, 3.57412e-09, 0.0106362, 0.0028732, 0.0107285)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0110168, -0.0134583, -0.10672)
+shape = SubResource("BoxShape3D_qhkxj")

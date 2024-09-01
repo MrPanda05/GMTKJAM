@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtmvv1xqxmtu3"]
+
+[ext_resource type="Shader" path="res://textures/glass.gdshader" id="1_eu7g2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2veq"]
+render_priority = 1
+shader = ExtResource("1_eu7g2")
+shader_parameter/tint_color = Color(1, 1, 1, 0.611765)
+shader_parameter/backlight_color = Color(1, 1, 1, 1)
+shader_parameter/noise_strenght = 0.05
+shader_parameter/roughness = 0.484
+shader_parameter/normal_strenght = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_30p8p"]
+material = SubResource("ShaderMaterial_b2veq")
+
+[node name="windows" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.56171, 0, 0, 0, 1, 0, 0, 0, 0.257337, 0, 0, 0)
+mesh = SubResource("BoxMesh_30p8p")

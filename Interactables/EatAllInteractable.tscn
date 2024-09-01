@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwfmhy5ku1avs"]
+
+[ext_resource type="Script" path="res://Interactables/EatAllInteractable.cs" id="1_bh17t"]
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="1_srjha"]
+[ext_resource type="PackedScene" uid="uid://bmqdu3wedvp2r" path="res://Models/Apple.tscn" id="2_djsjf"]
+[ext_resource type="PackedScene" uid="uid://dkv3d8mk01snw" path="res://Models/Banana.tscn" id="4_rb2yb"]
+[ext_resource type="PackedScene" uid="uid://saajacf7twgg" path="res://Models/Cupjuice.tscn" id="5_qda1e"]
+[ext_resource type="PackedScene" uid="uid://t1vbq5qrl6ck" path="res://Commons/Components/SoundPool3d.tscn" id="6_2he6f"]
+[ext_resource type="AudioStream" uid="uid://bmf0xne23isx6" path="res://Sounds/apple-bite-chewcut.mp3" id="7_jxorw"]
+[ext_resource type="AudioStream" uid="uid://bhjxhmofxhwjh" path="res://Sounds/drinkcut.mp3" id="8_g8gw6"]
+[ext_resource type="AudioStream" uid="uid://catr6o5elepw2" path="res://Sounds/door-knock-175164.mp3" id="9_hvn2m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rxkuf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n2lq6"]
+size = Vector3(1, 1, 2.26489)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tec4w"]
+height = 3.0
+radius = 0.9
+
+[node name="EatAllInteractable" type="Node3D" node_paths=PackedStringArray("area1", "area2", "area3", "soundPool")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0818602)
+script = ExtResource("1_bh17t")
+area1 = NodePath("cupjuice/OrangeJuice")
+area2 = NodePath("apple/Apple2")
+area3 = NodePath("banana/Banana")
+soundPool = NodePath("knockdoor")
+
+[node name="apple" parent="." instance=ExtResource("2_djsjf")]
+transform = Transform3D(0.551664, 0, 0, 0, 0.551664, 0, 0, 0, 0.551664, 0, 0, 0)
+
+[node name="Apple2" parent="apple" node_paths=PackedStringArray("SoundPool3D") instance=ExtResource("1_srjha")]
+unique = true
+SoundPool3D = NodePath("../../EatSound")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="apple/Apple2"]
+transform = Transform3D(0.202988, 0, 0, 0, 0.202988, 0, 0, 0, 0.202988, 0, 0, 0)
+shape = SubResource("BoxShape3D_rxkuf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="apple/Apple2"]
+transform = Transform3D(0.202988, 0, 0, 0, 0.202988, 0, 0, 0, 0.202988, 0, 0, 0)
+shape = SubResource("BoxShape3D_rxkuf")
+
+[node name="banana" parent="." instance=ExtResource("4_rb2yb")]
+transform = Transform3D(0.241834, 0.00253232, -0.098412, -1.44942e-17, 0.261017, 0.00671645, 0.0984446, -0.00622077, 0.241754, -0.43653, 0, 0.0386808)
+
+[node name="Banana" parent="banana" node_paths=PackedStringArray("SoundPool3D") instance=ExtResource("1_srjha")]
+transform = Transform3D(6.34526, 0, 0, 0, 6.34526, 0, 0, 0, 6.34526, 0.0110142, 0, -0.634525)
+unique = true
+SoundPool3D = NodePath("../../EatSound")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="banana/Banana"]
+transform = Transform3D(0.202988, 0, 0, 0, 0.202988, 3.86499e-08, 0, -3.86499e-08, 0.202988, 0, -4.88944e-09, 0.0451718)
+shape = SubResource("BoxShape3D_n2lq6")
+
+[node name="cupjuice" parent="." instance=ExtResource("5_qda1e")]
+transform = Transform3D(0.649312, 0, 0, 0, 0.649312, 0, 0, 0, 0.649312, 0.325153, 0, 0.15522)
+
+[node name="OrangeJuice" parent="cupjuice" node_paths=PackedStringArray("SoundPool3D") instance=ExtResource("1_srjha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.578859, 0, -0.1)
+unique = true
+SoundPool3D = NodePath("../../Drink")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cupjuice/OrangeJuice"]
+transform = Transform3D(0.202988, 0, 0, 0, 0.202988, 0, 0, 0, 0.202988, -0.599999, 0, 0)
+shape = SubResource("CylinderShape3D_tec4w")
+
+[node name="EatSound" parent="." instance=ExtResource("6_2he6f")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="EatSound"]
+stream = ExtResource("7_jxorw")
+max_distance = 5.0
+max_polyphony = 2
+
+[node name="Drink" parent="." instance=ExtResource("6_2he6f")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Drink"]
+stream = ExtResource("8_g8gw6")
+max_distance = 5.0
+max_polyphony = 2
+
+[node name="knockdoor" parent="." instance=ExtResource("6_2he6f")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="knockdoor"]
+stream = ExtResource("9_hvn2m")
+max_distance = 3.0

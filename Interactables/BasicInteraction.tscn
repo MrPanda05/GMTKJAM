@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://37ni83g4y5de"]
+
+[ext_resource type="Script" path="res://Interactables/BasicInteraction.cs" id="1_0bmd8"]
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="1_hlmag"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dvxca"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bf053"]
+
+[node name="BasicInteraction" type="Node3D"]
+script = ExtResource("1_0bmd8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.493135, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_dvxca")
+
+[node name="InteractableArea" parent="." instance=ExtResource("1_hlmag")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("BoxShape3D_bf053")

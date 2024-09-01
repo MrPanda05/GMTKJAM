@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1bqd8ge43nf5"]
+
+[ext_resource type="PackedScene" uid="uid://c2pwa2crkrdbp" path="res://Models/toilet.fbx" id="1_ann3y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvho6"]
+size = Vector3(1, 0.874414, 1.66023)
+
+[node name="toilet" instance=ExtResource("1_ann3y")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337207, 0.330115)
+shape = SubResource("BoxShape3D_cvho6")

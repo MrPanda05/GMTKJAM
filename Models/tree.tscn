@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://fpvuw5p8slr1"]
+
+[ext_resource type="PackedScene" uid="uid://hqmp76vvx0x2" path="res://Models/low poly fir.fbx" id="1_fwxbg"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_or580"]
+size = Vector3(13.2397, 24.5924, 15.0875)
+
+[node name="low poly fir" instance=ExtResource("1_fwxbg")]
+transform = Transform3D(0.211953, 0, 0, 0, 0.211953, 0, 0, 0, 0.211953, 0, 0, 0)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.3509, 0)
+occluder = SubResource("BoxOccluder3D_or580")

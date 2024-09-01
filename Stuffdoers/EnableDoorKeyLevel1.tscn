@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xm0w1f81wdr0"]
+
+[ext_resource type="Script" path="res://Stuffdoers/EnableDoorKeyLevel1.cs" id="1_wbtjn"]
+
+[node name="EnableDoorKeyLevel1" type="Node3D"]
+script = ExtResource("1_wbtjn")

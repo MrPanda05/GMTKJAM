@@ -1,6 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgn7bic8rcmm1"]
+[gd_scene load_steps=6 format=3 uid="uid://dgn7bic8rcmm1"]
 
 [ext_resource type="Script" path="res://LePlayer/PlayerHud.cs" id="1_8fj1s"]
+[ext_resource type="Shader" path="res://textures/pixelated.gdshader" id="2_caspu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7u2b"]
+shader = ExtResource("2_caspu")
+shader_parameter/shake = 0.164
+shader_parameter/noiseQuality = 0.1
+shader_parameter/noiseIntensity = 0.002
+shader_parameter/offsetIntensity = 0.0012
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 200.0
+shader_parameter/grainIntensity = 0.04
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = true
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.008
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_v1vmq"]
 specular_color = Color(0.666667, 0.72549, 0.584314, 1)
@@ -21,6 +36,15 @@ script = ExtResource("1_8fj1s")
 interactLabel = NodePath("InteractLabel")
 monologueLabel = NodePath("Monologue")
 
+[node name="pixel" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_r7u2b")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0.862745, 0, 1)
 layout_mode = 1
@@ -29,8 +53,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -4.0
-offset_right = 5.0
+offset_right = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -55,20 +78,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Monologue" type="Label" parent="." groups=["MonologueLabel"]]
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.278
-anchor_top = 0.741
-anchor_right = 0.722
-anchor_bottom = 0.901
-offset_left = -0.256042
-offset_top = -0.16803
-offset_right = 0.255859
-offset_bottom = 3.15198
+anchor_left = 0.1
+anchor_top = 0.733
+anchor_right = 0.912
+anchor_bottom = 0.911
+offset_top = 0.119995
+offset_right = 0.319946
+offset_bottom = 0.039978
 grow_horizontal = 2
 grow_vertical = 0
-text = "Time to go home"
+text = "Time to go homeasaaaaaaaaaaaaaaa"
 label_settings = SubResource("LabelSettings_cx4q8")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3

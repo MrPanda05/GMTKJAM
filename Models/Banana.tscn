@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkv3d8mk01snw"]
+
+[ext_resource type="PackedScene" uid="uid://clv632jrqfiph" path="res://Models/banana.fbx" id="1_slrw5"]
+[ext_resource type="Texture2D" uid="uid://chb00nipjxgo7" path="res://textures/bananatex.png" id="2_w0w3k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4mkc"]
+albedo_texture = ExtResource("2_w0w3k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1hte"]
+albedo_texture = ExtResource("2_w0w3k")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evxyk"]
+albedo_texture = ExtResource("2_w0w3k")
+
+[node name="banana" instance=ExtResource("1_slrw5")]
+
+[node name="banana" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_l4mkc")
+
+[node name="banana_001" parent="banana" index="0"]
+material_override = SubResource("StandardMaterial3D_a1hte")
+
+[node name="banana_002" parent="banana" index="1"]
+material_override = SubResource("StandardMaterial3D_evxyk")

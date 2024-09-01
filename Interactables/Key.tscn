@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://chxbymi3bwek4"]
+
+[ext_resource type="Script" path="res://Interactables/KeyInteractable.cs" id="1_hjfok"]
+[ext_resource type="PackedScene" uid="uid://brbjhvwmwt6nh" path="res://Interactables/InteractableArea.tscn" id="1_kc22h"]
+[ext_resource type="PackedScene" uid="uid://b7ke537e4efuy" path="res://Models/Keymodel.tscn" id="3_p7tqt"]
+[ext_resource type="PackedScene" uid="uid://t1vbq5qrl6ck" path="res://Commons/Components/SoundPool3d.tscn" id="4_c4hau"]
+[ext_resource type="AudioStream" uid="uid://ck1mkoxppc426" path="res://Sounds/key-cut.mp3" id="5_byc01"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jk1du"]
+size = Vector3(0.778687, 0.710663, 1)
+
+[node name="Key" type="Node3D"]
+script = ExtResource("1_hjfok")
+
+[node name="InteractableArea" parent="." node_paths=PackedStringArray("SoundPool3D") instance=ExtResource("1_kc22h")]
+TextOnInteract = "Got key"
+SoundPool3D = NodePath("../SoundPool3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.00942993, 0.01306, 0)
+shape = SubResource("BoxShape3D_jk1du")
+
+[node name="key" parent="." instance=ExtResource("3_p7tqt")]
+transform = Transform3D(0.204867, 0, 0, 0, 0.204867, 0, 0, 0, 0.204867, 0, 0, 0)
+
+[node name="SoundPool3D" parent="." instance=ExtResource("4_c4hau")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SoundPool3D"]
+stream = ExtResource("5_byc01")
+max_distance = 5.0

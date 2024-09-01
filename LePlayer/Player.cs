@@ -1,4 +1,5 @@
 using Commons.Components;
+using Commons.Singletons;
 using Godot;
 using System;
 using static Godot.TextServer;
@@ -22,6 +23,8 @@ namespace LePlayer
 
         private Vector2 Inputdir;
         private Vector3 dir;
+
+        public bool disableMovement;
         private void GetInput()
         {
             jumping = Input.IsActionJustPressed("Jump");
@@ -30,11 +33,13 @@ namespace LePlayer
         }
         public override void _Ready()
         {
+            DialogueManager.Instance.ShowPlayerText("Gosh... its so foggy today, I can't see shit...");
             Input.MouseMode = Input.MouseModeEnum.Captured;
         }
 
         public override void _UnhandledInput(InputEvent @event)
         {
+            if (disableMovement) return;
             if (@event is InputEventMouseMotion mouse)
             {
                 Vector3 camRot = new Vector3();
@@ -81,6 +86,7 @@ namespace LePlayer
         }
         public override void _PhysicsProcess(double delta)
         {
+            if (disableMovement) return;
             vel = Velocity;
             vel.Y = velocityComp.AddGravity((float)delta);
             GetInput();
